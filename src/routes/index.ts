@@ -1,4 +1,5 @@
 import express from 'express'
+import User from './user'
 
 const routes = (app: express.Application) => {
 
@@ -11,5 +12,6 @@ const routes = (app: express.Application) => {
         res.send('app running healthy')
     })
 
+    User(app)
 }
 export default routes;
