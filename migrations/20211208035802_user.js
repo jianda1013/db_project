@@ -3,8 +3,7 @@ exports.up = function (knex) {
     return knex.schema.hasTable('user').then(exist => {
         if (!exist) {
             return knex.schema.createTable('user', table => {
-                table.integer('id').primary();
-                table.string('username', 255);
+                table.string('username', 255).primary();
                 table.string('password', 255);
                 table.string('sex', 10);
             });
