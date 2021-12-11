@@ -6,7 +6,8 @@ exports.up = function (knex) {
                 table.integer('id').unsigned().notNullable();
                 table.string('name', 255).primary();
                 table.boolean('legendary').defaultTo(true);
-                table.string('type', 255).references('type').inTable('type');
+                table.string('type1', 255).references('type').inTable('type');
+                table.string('type2', 255).references('type').inTable('type');
             });
         }
     });
