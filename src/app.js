@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express')
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -8,5 +8,7 @@ app.listen(process.env.PORT_REST, () => {
     console.log(`DB 2021`)
 });
 
-import routes from './routes'
-routes(app);
+const db = require('./db');
+db.migrate.latest();
+
+require('./routes')(app);

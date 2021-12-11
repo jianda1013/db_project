@@ -31,3 +31,6 @@ re: clean start
 
 exec: ## Execute command inside api container, need to use command=
 	$(DC) exec $(MC) sh
+
+migrate: ## Create new migrations inside /migrations folder, need to use name=
+	$(DC) exec $(MC) ./node_modules/knex/bin/cli.js migrate:make $(name)
