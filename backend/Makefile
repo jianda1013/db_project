@@ -3,13 +3,16 @@ MC=api
 
 all:start
 
+mac:
+	@export LC_CTYPE=C
+
 init: ## Init the project after a git clone
 	@echo "INIT PROJECT"
 	@echo "Copying .env.dist in .env"
 	@cp .env.dist .env
-	@sed -i "s@SECRET_TO_CHANGE@`tr -dc A-Za-z0-9_ < /dev/urandom | head -c 8192 | xargs`@g" .env
-	@sed -i "s@NODE_ENV=@NODE_ENV=development@g" .env
-	@sed -i "s@TIMEZONE=@TIMEZONE=8@g" .env
+	@sed -i "" "s@SECRET_TO_CHANGE@`tr -dc A-Za-z0-9_ < /dev/urandom | head -c 8192 | xargs`@g" .env
+	@sed -i "" "s@NODE_ENV=@NODE_ENV=development@g" .env
+	@sed -i "" "s@TIMEZONE=@TIMEZONE=8@g" .env
 	@echo ".env: \n"
 	@cat .env
 	@echo "\n"
@@ -31,3 +34,6 @@ re: clean start
 
 exec: ## Execute command inside api container, need to use command=
 	$(DC) exec $(MC) sh
+
+migrate: ## Create new migrations inside /migrations folder, need to use name=
+	$(DC) exec $(MC) ./node_modules/knex/bin/cli.js migrate:make $(name)
