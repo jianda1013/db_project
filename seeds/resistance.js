@@ -1,4 +1,4 @@
-const deleteTable = require('./deleteTable')
+const deleteTable = require('../externalFunc/deleteTable')
 
 exports.seed = function (knex) {
     return deleteTable(knex, ['region_pokemon', 'user_pokemon']).then(() => {
