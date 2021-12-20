@@ -1,0 +1,22 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/main.js"></script>
+</head>
+
+<body>
+    <div id="game">
+        <h1>寶可夢集集樂</h1>
+        <form id='userForm' >
+            <p>帳號 : <input id='userId' type="text" name="使用者ID"></input></p>
+            <p>密碼 : <input id='passwd' type="password" name="使用者密碼"></input></p>
+            <input id='login' type="button" name="登入" value="login" onclick='processFormData();'></input>
+            <input id='register' type="button" name="註冊" value="register" onclick='processFormRegi();'></input>
+            <p id='checkUserAns' style="color: rgb(255, 0, 0);"></p>
+        </form>
+    </div>
+</body>
+
+</html>
