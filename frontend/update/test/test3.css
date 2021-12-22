@@ -1,0 +1,53 @@
+input {
+    width: 100px;
+    border-radius: 25px  ;
+    
+}
+
+.fire
+{
+    background-color:rgb(177, 100, 100);
+    border-radius: 10px; 
+    
+}
+
+.water
+{
+    background-color:rgb(75, 138, 180);
+    border-radius: 10px; 
+}
+
+.tree
+{
+    background-color:rgb(48, 146, 56);
+    border-radius: 10px; 
+}
+
+.sky
+{
+    background-color:rgb(75, 142, 230);
+    border-radius: 10px; 
+}
+
+.ice
+{
+    background-color:rgb(124, 180, 245);
+    border-radius: 10px; 
+}
+
+.hell
+{
+    background-color:rgb(204, 36, 176);
+    border-radius: 10px; 
+}
+
+.fight 
+{
+    background-color:rgb(129, 127, 129);
+    border-radius: 10px; 
+}
+.stone 
+{
+    background-color:rgb(148, 95, 15);
+    border-radius: 10px; 
+}
