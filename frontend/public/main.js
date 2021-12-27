@@ -7,13 +7,5 @@ function processFormData(){
     }
 }
 
-function processFormA(){
-    window.location.href='backbagList.html';
-}
-function processFormB(){
-    window.location.href='bookList.html';
-}
-function processFormC(){
-    window.location.href='explore.html';
-}
+
 
