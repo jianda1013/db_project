@@ -99,3 +99,13 @@ tr, td {
 td:hover {
   background-color: #E6FBFF;
 }
+
+
+input[type=button]:hover {
+  background-color:#2F4F4F ;
+  color: white;
+}
+
+
+
+

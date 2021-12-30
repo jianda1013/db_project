@@ -53,4 +53,23 @@ function goback(){
     window.location.href='operation.html'
 }
 
+function play() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
+
+// window.onload=function(){
+//     const button = document.querySelector(".btn");
+//     console.log(button)
+//     button.addEventListener('click', updateButton);
+// }
+
+
+function playSound() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
+
 
