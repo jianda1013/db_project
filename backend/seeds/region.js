@@ -29,9 +29,6 @@ exports.seed = function (knex) {
                 { region: "Route 23" },
                 { region: "Route 24" },
                 { region: "Route 25" },
-                { region: "Route 26" },
-                { region: "Route 27" },
-                { region: "Route 28" },
 
                 { region: "Pallet Town" }, // 真新鎮
                 { region: "Viridian City" }, // 常青市
@@ -46,18 +43,42 @@ exports.seed = function (knex) {
                 { region: "Indigo Plateau" } // 石英高原
             ]).then(async () => {
                 await knex("region").update({ up: "Route 1", down: "Route 21" }).where({ region: "Pallet Town" })
-                await knex("region").update({ up: "Viridian City", down: "Pallet Town" }).where({ region: "Route 1" })
                 await knex("region").update({ up: "Route 2", down: "Route 1", left: "Route 22" }).where({ region: "Viridian City" })
-                await knex("region").update({ up: "Pewter City", down: "Viridian City" }).where({ region: "Route 2" })
                 await knex("region").update({ right: "Route 3", down: "Route 2" }).where({ region: "Pewter City" })
+                await knex("region").update({ right: "Route 9", left: "Route 4", up: "Route 24", down: "Route 5" }).where({ region: "Cerulean City" })
+                await knex("region").update({ up: "Route 6", right: "Route 11" }).where({ region: "Vermilion City" })
+                await knex("region").update({ left: "Route 8", up: "Route 10", down: "Route 12" }).where({ region: "Lavender Town" })
+                await knex("region").update({ right: "Route 7", left: "Route 16" }).where({ region: "Celadon City" })
+                await knex("region").update({ right: "Route 8", left: "Route 7", up: "Route 5", down: "Route 6" }).where({ region: "Saffron City" })
+                await knex("region").update({ right: "Route 15", left: "Route 18", down: "Route 19" }).where({ region: "Fuchsia City" })
+                await knex("region").update({ right: "Route 20", up: "Route 21" }).where({ region: "Cinnabar Island" })
+                await knex("region").update({ down: "Route 23" }).where({ region: "Indigo Plateau" })
+
+                await knex("region").update({ up: "Viridian City", down: "Pallet Town" }).where({ region: "Route 1" })
+                await knex("region").update({ up: "Pewter City", down: "Viridian City" }).where({ region: "Route 2" })
                 await knex("region").update({ right: "Route 4", left: "Pewter City" }).where({ region: "Route 3" })
                 await knex("region").update({ right: "Cerulean City", left: "Route 3" }).where({ region: "Route 4" })
-                await knex("region").update({ right: "Route 9", left: "Route 4", up: "Route 24", down: "Route 5" }).where({ region: "Cerulean City" })
                 await knex("region").update({ up: "Cerulean City", down: "Saffron City" }).where({ region: "Route 5" })
-                await knex("region").update({ right: "Route 8", left: "Route 7", up: "Route 5", down: "Route 6" }).where({ region: "Saffron City" })
                 await knex("region").update({ up: "Saffron City", down: "Vermilion City" }).where({ region: "Route 6" })
-                await knex("region").update({ up: "Route 6", right: "Route 11" }).where({ region: "Vermilion City" })
                 await knex("region").update({ right: "Saffron City", left: "Celadon City" }).where({ region: "Route 7" })
+                await knex("region").update({ right: "Lavender Town", left: "Saffron City" }).where({ region: "Route 8" })
+                await knex("region").update({ left: "Cerulean City", down: "Route 10" }).where({ region: "Route 9" })
+                await knex("region").update({ up: "Route 9", down: "Lavender Town" }).where({ region: "Route 10" })
+                await knex("region").update({ right: "Route 12", left: "Vermilion City" }).where({ region: "Route 11" })
+                await knex("region").update({ left: "Route 11", up: "Lavender Town", down: "Route 13" }).where({ region: "Route 12" })
+                await knex("region").update({ up: "Route 12", down: "Route 14" }).where({ region: "Route 13" })
+                await knex("region").update({ left: "Route 15", up: "Route 13" }).where({ region: "Route 14" })
+                await knex("region").update({ right: "Route 14", left: "Fuchsia City" }).where({ region: "Route 15" })
+                await knex("region").update({ right: "Celadon City", down: "Route 17" }).where({ region: "Route 16" })
+                await knex("region").update({ up: "Route 16", down: "Route 18" }).where({ region: "Route 17" })
+                await knex("region").update({ right: "Fuchsia City", up: "Route 17", }).where({ region: "Route 18" })
+                await knex("region").update({ left: "Route 20", up: "Fuchsia City" }).where({ region: "Route 19" })
+                await knex("region").update({ right: "Route 19", left: "Cinnabar Island" }).where({ region: "Route 20" })
+                await knex("region").update({ up: "Pallet Town", down: "Cinnabar Island" }).where({ region: "Route 21" })
+                await knex("region").update({ right: "Viridian City", up: "Route 23" }).where({ region: "Route 22" })
+                await knex("region").update({ up: "Indigo Plateau", down: "Route 22" }).where({ region: "Route 23" })
+                await knex("region").update({ up: "Route 25", down: "Cerulean City" }).where({ region: "Route 24" })
+                await knex("region").update({ down: "Route 24" }).where({ region: "Route 25" })
             })
         })
     })

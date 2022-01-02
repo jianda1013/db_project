@@ -2,7 +2,7 @@ const deleteTable = require('../externalFunc/deleteTable')
 
 exports.seed = function (knex) {
     return deleteTable(knex, ['region_pokemon', 'user_pokemon']).then(() => {
-        return deleteTable(knex, ['pokemon', 'resistance']).then(() => {
+        return deleteTable(knex, ['pokemon']).then(() => {
             return deleteTable(knex, ['type']).then(() => {
                 return knex("type").insert([
                     { type: "Normal" },
