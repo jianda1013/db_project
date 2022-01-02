@@ -11,4 +11,5 @@ module.exports = (app) => {
     })
 
     require('./user')(app, validate)
+    require('./pokemon')(app, validate)
 }

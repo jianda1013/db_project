@@ -11,6 +11,6 @@ module.exports = validations => {
         if (errors.isEmpty())
             return next();
 
-        res.status(400).json(errors)
+        res.status(400).json(errors.errors[0])
     };
 };
