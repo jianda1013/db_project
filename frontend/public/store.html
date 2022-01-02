@@ -1,29 +1,40 @@
 <html>
 
 <head>
-  <title>查看背包</title>
+  <title>商店</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script src="/javascripts/main.js"></script>
   <audio id="audio" src="https://www.mboxdrive.com/571501__kagateni__cute2%20(mp3cut.net).mp3"> </audio>
 </head>
 
 <body>
-    <h1>背包</h1>
-    <p>背包容量 : ??</p>
+    <h1>商店</h1>
     <table>
+        <tr>
+            <td colspan="5">背包區</td>
+        </tr>
+        <tr>
+            <td colspan="4">增加背包容量 * 5</td>
+            <td><input id='buy' type="button" name="購買" value="購買" onclick='playSound();' style="width: auto;"></input></td>
+        </tr>
+    </table></br>
+    <table>
+        <tr>
+            <td colspan="5">寶可夢區</td>
+        </tr>
         <tr>
             <td>編號</td>
             <td>名稱</td>
             <td>屬性</td>
             <td>地區</td>
-            <td style="color: crimson;">放生</td>
+            <td>購買</td>
         </tr>
         <tr>
             <td>1</td>
             <td>皮卡丘</td>
             <td>雷</td>
             <td>我不知道</td>
-            <td><input id='freed' type="button" name="放生" value="放生" onclick='playSound();' style="width: auto;"></input></td>
+            <td><input id='buy' type="button" name="購買" value="購買" onclick='playSound();' style="width: auto;"></input></td>
         </tr>
         <tr>
             <td>2</td>

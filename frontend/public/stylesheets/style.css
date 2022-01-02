@@ -1,35 +1,50 @@
+@font-face {
+  font-family: 'cwTeXYen';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/ea/cwtexyen/v3/cwTeXYen-zhonly.eot);
+  src: url(//fonts.gstatic.com/ea/cwtexyen/v3/cwTeXYen-zhonly.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/cwtexyen/v3/cwTeXYen-zhonly.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/cwtexyen/v3/cwTeXYen-zhonly.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/cwtexyen/v3/cwTeXYen-zhonly.ttf) format('truetype');
+}
+
 .gameWin {
   position: relative;
   width: 100%;
   height: 100%;
   margin:0 auto;
-  background-color: rgb(247, 241, 186);
+  background-image: url( '/images/sky.png' );
+  background-size: cover;
 }
 
 .gameWin iframe {
   position: absolute;
   top: 50%;
-  transform: translate(-50%, -67%);
+  transform: translate(-50%, -64%);
   left: 50%; 
   display: block;
-  background: rgb(137, 212, 87);
-  width: 10cm;
-  height: 6cm;
+  background-image: url( '/images/back.png' );
+  width: 13cm;
+  height: 7.8cm;
   border: 5px solid black;
-  border-radius:30px;
+  border-radius:50px;
 }
 
 .gameWin img {
   position: relative;
   width: auto;
-  height: 100%;
+  height: 12cm;
   display:block;
-  margin:0 auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%; 
 }
 
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'cwTeXYen';
   margin:0px;
   text-align: center;
   /*background:#fff url(gameboy.png) center center fixed no-repeat;
@@ -41,22 +56,26 @@ body {
   font-size: 20px;
 }
 
-a {
-  color: #00B7FF;
-}
-
 input {
   padding: 5px 15px;
   background: rgb(245, 243, 243);
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
   cursor: pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  width: 40%;
+  width: 30%;
 }
 input[type="text"],input[type="password"] {
-  width: 80%;
+  width: 50%;
 }
 
+.area {
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width: 30%;
+  margin: 5px 0px;
+}
 
 table {
   width: 100%;
@@ -80,3 +99,13 @@ tr, td {
 td:hover {
   background-color: #E6FBFF;
 }
+
+
+input[type=button]:hover {
+  background-color:#2F4F4F ;
+  color: white;
+}
+
+
+
+
