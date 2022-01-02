@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+module.exports = (app) => {
+  app.get('/', function (req, res, next) {
+    res.render('index', { title: '寶可夢集集樂' });
+  });
+  app.get('/users', function (req, res, next) {
+    res.send('respond with a resource');
+  });
+}
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: '寶可夢集集樂' });
-});
-
-module.exports = router;

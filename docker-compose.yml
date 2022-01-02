@@ -1,15 +1,27 @@
 version: "3"
 
 networks:
-  weather-go:
+  pokemon:
     driver: bridge
 
 services:
+  front:
+    restart: always
+    build: ./frontend
+    volumes:
+      - "./frontend:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    ports:
+      - "${PORT_PAGE}:${PORT_PAGE}"
+    env_file:
+      - .env
+    networks:
+      - pokemon
   api:
     restart: always
-    build: .
+    build: ./backend
     volumes:
-      - "./:/usr/src/app"
+      - "./backend:/usr/src/app"
       - "/usr/src/app/node_modules"
     env_file:
       - .env
@@ -19,7 +31,7 @@ services:
     depends_on:
       - "mysql"
     networks:
-      - weather-go
+      - pokemon
   mysql:
     restart: always
     image: mariadb:10.5
@@ -28,7 +40,7 @@ services:
     volumes:
       - "./db_data:/var/lib/mysql"
     networks:
-      - weather-go
+      - pokemon
   phpmyadmin:
     restart: always
     image: phpmyadmin:latest
@@ -38,5 +50,5 @@ services:
     ports:
       - "8181:80"
     networks:
-      - weather-go
+      - pokemon
 
