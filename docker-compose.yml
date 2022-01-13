@@ -15,6 +15,7 @@ services:
       - "${PORT_PAGE}:${PORT_PAGE}"
     env_file:
       - .env
+      - .env.mysql
     networks:
       - pokemon
   api:

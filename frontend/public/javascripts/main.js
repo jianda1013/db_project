@@ -10,7 +10,7 @@ function processFormData(){
     if(!userid || userid == null || !passwd || passwd == null){
         document.getElementById("checkUserAns").innerHTML = "請輸入帳號密碼";
     }else{
-        window.location.href='operation.html';
+        window.location.href='operation';
     }
 }
 /*
@@ -24,7 +24,7 @@ function processFormRegi(){
     if(!userid || userid == null || !passwd || passwd == null){
         document.getElementById("checkUserAns").innerHTML = "請輸入帳號密碼";
     }else{
-        window.location.href='choose.html';
+        window.location.href='choose';
     }
 }
 /*
@@ -50,7 +50,7 @@ store.html
 購買寶可夢，新增寶可夢至使用者背包(DB)
 */
 function goback(){
-    window.location.href='operation.html'
+    window.location.href='operation'
 }
 
 function play() {

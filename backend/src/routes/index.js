@@ -5,7 +5,7 @@ module.exports = (app) => {
         res.send('2021 nccu database api')
     })
 
-    app.get('/health', (req, res) => {
+    app.post('/health', (req, res) => {
         console.log({ headers: req.headers, body: req.body, query: req.query })
         res.send('app running healthy')
     })

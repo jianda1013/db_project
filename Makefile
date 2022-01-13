@@ -1,6 +1,6 @@
 DC=docker-compose
 MC=api
-
+FT=front
 all:start
 
 mac:
@@ -29,6 +29,9 @@ clean: ## Stop and delete the project stack
 
 logs: ## Attach to standard output of containers (to see logs)
 	$(DC) -f docker-compose.yml logs -f $(MC)
+
+flogs: ## Attach to standard output of containers (to see logs)
+	$(DC) -f docker-compose.yml logs -f $(FT)
 
 re: clean start
 
