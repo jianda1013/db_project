@@ -63,5 +63,13 @@ const self = module.exports = {
                     .catch(err => reject(err))
             }).catch(err => console.log(err))
         })
+    },
+
+    getUserMoney({ username }) {
+        return new Promise((resolve, reject) => {
+            mysql('user').first('money').where({ username })
+                .then(user => resolve(user.money))
+                .catch(err => reject(err))
+        })
     }
 }

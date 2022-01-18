@@ -5,6 +5,18 @@ module.exports = (app) => {
         res.sendFile(path.join(__dirname, `/../../dist/index.html`))
     });
 
+    app.get('/backbagList', (req, res) => {
+        res.sendFile(path.join(__dirname, `/../../dist/backbagList.html`))
+    });
+
+    app.get('/explore', (req, res) => {
+        res.sendFile(path.join(__dirname, `/../../dist/explore.html`))
+    });
+
+    app.get('/store', (req, res) => {
+        res.sendFile(path.join(__dirname, `/../../dist/store.html`))
+    });
+
     app.get('/choose', (req, res) => {
         res.sendFile(path.join(__dirname, `/../../dist/choose.html`))
     });
@@ -16,4 +28,9 @@ module.exports = (app) => {
     app.get('/operation', (req, res) => {
         res.sendFile(path.join(__dirname, `/../../dist/operation.html`))
     });
+
+    app.get('/catch', (req, res) => {
+        res.sendFile(path.join(__dirname, `/../../dist/YN.html`))
+    });
+
 }
