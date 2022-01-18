@@ -6,7 +6,7 @@ const { header, body, query } = require('express-validator')
 module.exports = (app, validate) => {
     app.get('/pokemon', (req, res) => {
         Pokemon.list(req.query)
-            .then(msg => res.json(msg))
+            .then(data => res.json(data))
             .catch(err => res.status(500).json({ err }))
     })
 
@@ -24,7 +24,7 @@ module.exports = (app, validate) => {
         })
     ]), (req, res) => {
         Pokemon.getInit(req.body)
-            .then(msg => res.json(msg))
+            .then(msg => res.json({ msg }))
             .catch(err => res.status(500).json({ err }))
     })
 
@@ -36,7 +36,27 @@ module.exports = (app, validate) => {
         }),
     ]), (req, res) => {
         Bag.getUserBag(req.body.user)
-            .then(msg => res.json(msg))
+            .then(data => res.json(data))
+            .catch(err => res.status(500).json({ err }))
+    })
+
+    app.post('/user/pokemon', validate([
+        header('Authorization').exists().custom(async (auth, { req }) => {
+            return User.checkAuth(auth).then(async user => {
+                return Pokemon.checkLimit(user.username).then(() => {
+                    req.body.user = user.username;
+                })
+            })
+        }),
+        body('pokemon').exists().custom(async name => {
+            return Pokemon.list({ name }).then(data => {
+                if (data.length === 0)
+                    return Promise.reject();
+            })
+        })
+    ]), (req, res) => {
+        Pokemon.newPokemon(req.body)
+            .then(msg => res.json({ msg }))
             .catch(err => res.status(500).json({ err }))
     })
 
@@ -54,7 +74,7 @@ module.exports = (app, validate) => {
         })
     ]), (req, res) => {
         Bag.abandon(req.query)
-            .then(msg => res.json(msg))
+            .then(msg => res.json({ msg }))
             .catch(err => res.status(500).json({ err }))
     })
 }

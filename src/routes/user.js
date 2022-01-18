@@ -1,5 +1,5 @@
 const User = require('../function/user')
-const { body } = require('express-validator')
+const { header, body } = require('express-validator')
 
 module.exports = (app, validate) => {
     /**
@@ -70,6 +70,18 @@ module.exports = (app, validate) => {
     ]), (req, res) => {
         User.login(req.body)
             .then(auth => res.json({ auth }))
+            .catch(err => res.status(500).json({ err }))
+    })
+
+    app.get('/money', validate([
+        header('Authorization').exists().custom(async (auth, { req }) => {
+            return User.checkAuth(auth).then(user => {
+                req.body.username = user.username;
+            })
+        }),
+    ]), (req, res) => {
+        User.getUserMoney(req.body)
+            .then(msg => res.json({ msg }))
             .catch(err => res.status(500).json({ err }))
     })
     /**

@@ -14,7 +14,7 @@ db.migrate.latest().then(() => {
     // const runSeed = require('../externalFunc/runSeeds')
     // // if (process.env.RESET)
     // runSeed(db, ['type.js', 'region.js']).then(() => {
-    //     runSeed(db, ['pokemon.js']).then(() => {
+    //     runSeed(db, ['pokemon.js', 'region_pokemon.js']).then(() => {
     //         console.log('done')
     //     })
     // })
