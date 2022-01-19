@@ -9,6 +9,7 @@ exports.up = function (knex) {
                 table.boolean('initial').defaultTo(false);
                 table.string('type1', 255).references('type').inTable('type');
                 table.string('type2', 255).references('type').inTable('type');
+                table.integer('evolve').defaultTo(0);
             });
         }
     });
