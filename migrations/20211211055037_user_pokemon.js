@@ -7,7 +7,6 @@ exports.up = function (knex) {
                 table.string('user', 255).references('username').inTable('user');
                 table.string('pokemon', 255).references('name').inTable('pokemon');
                 table.timestamp('catched_time').defaultTo(knex.fn.now());
-                table.string('catched_at', 255).references('region').inTable('region');
             });
         }
     });

@@ -93,6 +93,17 @@ function getUserPokemon() {
     callAPI({
         url: "./user/pokemon", type: "GET", success: (data) => {
             fillBagMap(data);
+            getUserBag();
+        }, fail: data => {
+            alert(data.responseJSON.msg)
+        }
+    })
+}
+
+function getUserBag() {
+    callAPI({
+        url: "./bag/size", type: "GET", success: (data) => {
+            document.getElementById("bagSize").innerHTML = `背包容量 : ${data.msg}`
         }, fail: data => {
             alert(data.responseJSON.msg)
         }
@@ -100,9 +111,9 @@ function getUserPokemon() {
 }
 
 function fillBagMap(data) {
-    let table = `<tr> <td>編號</td> <td>名稱</td> <td>屬性1</td> <td>屬性2</td> <td>地區</td> <td style="color: crimson;">放生</td> </tr>`
+    let table = `<tr> <td>編號</td> <td>名稱</td> <td>屬性1</td> <td>屬性2</td> <td style="color: crimson;">放生</td> </tr>`
     data.forEach((item, i) => {
-        table += `<tr> <td>${i + 1}</td> <td>${item.pokemon}</td> <td>${item.type1}</td> <td>${item.type2}</td> <td>${item.catched_at}</td>
+        table += `<tr> <td>${i + 1}</td> <td>${item.pokemon}</td> <td>${item.type1}</td> <td>${item.type2 ? item.type2 : ""}</td>
         <td><input id='freed' type="button" user_pokemon_id="${item.user_pokemon_id}" value="放生" onclick='abandon(this);' style="width: auto;"></input></td> </tr>`
     })
     document.getElementById("userPokemon").innerHTML = table;
@@ -136,9 +147,20 @@ function getPokedex() {
 function fillPokedex(data) {
     let table = `<tr> <td>編號</td> <td>名稱</td> <td>屬性1</td> <td>屬性2</td> </tr>`
     data.forEach(item => {
-        table += `<tr> <td>${item.id}</td> <td>${item.name}</td> <td>${item.type1}</td> <td>${item.type2}</td> </tr>`
+        table += `<tr> <td>${item.id}</td> <td>${item.name}</td> <td>${item.type1}</td> <td>${item.type2 ? item.type2 : ""}</td> </tr>`
     })
     document.getElementById("pokedex").innerHTML = table;
+}
+
+function getEncounter(data) {
+    callAPI({
+        url: `./encounter?region=${data.id}`, type: "GET", success: (data) => {
+            localStorage.setItem("encounter", data.msg.name);
+            window.location.href = './catch';
+        }, fail: data => {
+            alert(data.responseJSON.msg)
+        }
+    })
 }
 
 /*
@@ -146,6 +168,100 @@ store.html
 購買背包容量，修改使用者背包空間(DB)
 購買寶可夢，新增寶可夢至使用者背包(DB)
 */
+
+function addBag() {
+    callAPI({
+        url: `./buy/bag`, type: "PUT", success: (data) => {
+            getMoney();
+        }, fail: data => {
+            alert(data.responseJSON.msg)
+        }
+    })
+}
+
+function getLegendary() {
+    callAPI({
+        url: "./pokemon?legendary=1", type: "GET", success: (data) => {
+            fillShop(data);
+            getMoney();
+        }, fail: (data) => {
+            alert(data.responseJSON.msg)
+        }
+    })
+}
+
+function getMoney() {
+    callAPI({
+        url: "./money", type: "GET", success: (data) => {
+            document.getElementById("remain").innerHTML = `remain: $${data.msg}`
+        }, fail: (data) => {
+            alert(data.responseJSON.msg)
+        }
+    })
+}
+
+function fillShop(data) {
+    let table = `<tr> <td colspan="5">寶可夢區</td> </tr>
+    <tr> <td>編號</td> <td>名稱</td> <td>屬性</td> <td>價格</td> <td>購買</td> </tr>`
+    data.forEach((item, index) => {
+        table += `<tr> <td>${index + 1}</td> <td>${item.name}</td> <td>${item.type1}</td> <td>87</td>
+        <td><input id='buy' type="button" pokemon_name=${item.name} name="購買" value="購買" onclick='shopLengend(this);' style="width: auto;"></input>
+        </td> </tr>`
+    })
+    document.getElementById("shopList").innerHTML = table;
+}
+
+function shopLengend(data) {
+    callAPI({
+        url: "./buy/pokemon", data: { pokemon: data.getAttribute("pokemon_name") }, type: "POST", success: (data) => {
+            getMoney();
+        }, fail: (data) => {
+            alert(data.responseJSON.msg)
+        }
+    })
+}
+///
+
+function meetEncounter() {
+    let pokemon = localStorage.getItem("encounter");
+    document.getElementById("catch_or_not").innerHTML = `遇到${pokemon}了!\n是否要捉取此寶可夢?`
+}
+
+function catchPokemon() {
+    callAPI({
+        url: "./user/pokemon", data: { pokemon: localStorage.getItem("encounter") }, type: "POST", success: (data) => {
+            if (data.msg != 'FAIL')
+                alert(`成功捉到${localStorage.getItem("encounter")}了\n獲得${data.msg}塊錢`)
+            else
+                alert(`${localStorage.getItem("encounter")}沒抓到\n並且逃跑了`)
+            localStorage.removeItem("encounter");
+            window.location.href = './explore';
+        }, fail: (data) => {
+            alert(data.responseJSON.msg)
+        }
+    })
+}
+
+function back() {
+    localStorage.removeItem("encounter");
+    window.location.href = './explore';
+}
+
+///
+
+function gymEncounter(data) {
+    callAPI({
+        url: `./gym/encounter?type=${data.id}`, type: "GET", success: (data) => {
+            localStorage.setItem("encounter", data.msg.name);
+            window.location.href = './catch';
+        }, fail: data => {
+            alert(data.responseJSON.msg)
+        }
+    })
+}
+
+///
+
 function goback() {
     window.location.href = 'operation'
 }
