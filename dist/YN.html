@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>捉取寶可夢</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="./main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body onload="meetEncounter()">
+    <h1 id="catch_or_not">是否要捉取此寶可夢?</h1>
+    <input id='yes' type="button" name="YES" value="YES" onclick='catchPokemon()'
+        style="width: 40%; background: rgb(177, 100, 100);"></input>
+    <input id='no' type="button" name="NO" value="NO" onclick='back()'
+        style="width: 40%; background: rgb(75, 138, 180);"></input>
+</body>
+
+</html>

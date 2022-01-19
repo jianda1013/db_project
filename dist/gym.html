@@ -1,21 +1,31 @@
 <html>
-    <head>
-        <title>道館</title>
-        <link rel="stylesheet" href="/stylesheets/style.css">
-        <script src="./main.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <h1>請選擇道館</h1>
-        <input class = 'area' id = "fire" type="button" value= "火系" style="background-color:rgb(177, 100, 100);"></input>
-        <input class = 'area' id = "water" type="button" value= "水系" style="background-color:rgb(75, 138, 180);"></input>
-        <input class = 'area' id = "tree" type="button" value= "草系" style="background-color:rgb(48, 146, 56);"></input>
-        <input class = 'area' id = "sky" type="button" value= "飛行系" style="background-color:rgb(75, 142, 230);"></input>
-        <input class = 'area' id = "ice" type="button" value= "冰系" style="background-color:rgb(124, 180, 245);"></input>
-        <input class = 'area' id = "hell" type="button" value= "超能力系" style="background-color:rgb(204, 36, 176);"></input>
-        <input class = 'area' id = "fight" type="button" value= "格鬥系" style="background-color:rgb(129, 127, 129);"></input>
-        <input class = 'area' id = "stone" type="button" value= "岩石系" style="background-color:rgb(148, 95, 15);"></input>
-        <p><input type="button" value= "返回"  onclick="window.location.href='explore.html'"></input></p>
-    </body>
+
+<head>
+    <title>道館</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="./main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>請選擇道館</h1>
+    <input class='area' id="Fire" type="button" value="火系" onclick="gymEncounter(this)"
+        style="background-color:rgb(177, 100, 100);"></input>
+    <input class='area' id="Water" type="button" value="水系" onclick="gymEncounter(this)"
+        style="background-color:rgb(75, 138, 180);"></input>
+    <input class='area' id="Grass" type="button" value="草系" onclick="gymEncounter(this)"
+        style="background-color:rgb(48, 146, 56);"></input>
+    <input class='area' id="Flying" type="button" value="飛行系" onclick="gymEncounter(this)"
+        style="background-color:rgb(75, 142, 230);"></input>
+    <input class='area' id="Ice" type="button" value="冰系" onclick="gymEncounter(this)"
+        style="background-color:rgb(124, 180, 245);"></input>
+    <input class='area' id="Psychic" type="button" value="超能力系" onclick="gymEncounter(this)"
+        style="background-color:rgb(204, 36, 176);"></input>
+    <input class='area' id="Fighting" type="button" value="格鬥系" onclick="gymEncounter(this)"
+        style="background-color:rgb(129, 127, 129);"></input>
+    <input class='area' id="Rock" type="button" value="岩石系" onclick="gymEncounter(this)"
+        style="background-color:rgb(148, 95, 15);"></input>
+    <p><input type="button" value="返回" onclick="window.location.href='explore.html'"></input></p>
+</body>
 
 </html>

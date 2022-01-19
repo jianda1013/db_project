@@ -5,8 +5,7 @@ exports.up = function (knex) {
             return knex.schema.createTable('region_pokemon', table => {
                 table.increments('id');
                 table.string('region', 255).references('region').inTable('region');
-                table.string('pokemon', 255).references('name').inTable('pokemon');
-                table.double('rate').notNullable();
+                table.string('type', 255).references('type').inTable('type');
             });
         }
     });

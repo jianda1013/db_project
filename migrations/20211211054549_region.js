@@ -4,10 +4,7 @@ exports.up = function (knex) {
         if (!exist) {
             return knex.schema.createTable('region', table => {
                 table.string('region', 255).primary();
-                table.string('up', 255).references('region').inTable('region').onUpdate('CASCADE').onDelete('CASCADE');
-                table.string('right', 255).references('region').inTable('region').onUpdate('CASCADE').onDelete('CASCADE');
-                table.string('down', 255).references('region').inTable('region').onUpdate('CASCADE').onDelete('CASCADE');
-                table.string('left', 255).references('region').inTable('region').onUpdate('CASCADE').onDelete('CASCADE');
+                table.string('name', 255);
             });
         }
     });
